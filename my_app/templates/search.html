@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>A Query Framework for a Functional Chemical Ontology</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+    	.wrapper {	
+    		padding: 50px;
+    	}
+    	.subont{
+    		padding-left: 20px;
+    	}
+  	</style>
+	</head>
+
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#myNavbar">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand">A Query Framework for a Functional Chemical Ontology</a>
+		    </div>
+		  </div>
+		</nav>
+		<div class="wrapper">
+      <h1>Search Compounds Based on the Provided Values Below:</h1>
+      <hr>
+      <br/ >
+      <form action="/search/" method="post"> 
+      	{% csrf_token %}
+				<label for="molecular_weight">Provide Molecular Weight: </label>
+				{{form.mw_from}}
+				<label> to </label>
+				{{form.mw_to}}
+				<br />
+				<label for="logp">Provide LogP: </label>
+				{{form.logp_from}}
+				<label> to </label>
+				{{form.logp_to}}
+				<br /><br />
+				<label for="ontology">Select sub-ontologies and associated terms:</label>
+				<br />
+				<label class="subont" for="subont">Sub-Ontology:</label>
+				{{form.subont1}}
+				<label class="subont" for="subont">Term:</label>
+				{{form.term1}}
+				<br />
+<!-- 				<label class="subont" for="subont">Sub-Ontology:</label>
+				{{form.subont2}}
+				<label class="subont" for="subont">Term:</label>
+				{{form.term2}}
+				<br /> -->
+				<label class="subont" for="subont">Sub-Ontology:</label>
+				{{form.subont3}}
+				<label class="subont" for="subont">Term:</label>
+				{{form.term3}}
+				<br /><br />
+				<label for="class">Select Class:</label>
+				{{form.klass}}
+				<br />
+				<hr>
+				<input class="btn btn-primary" type="submit" value="Search">
+			</form>
+    </div>
+	</body>
+</html> 

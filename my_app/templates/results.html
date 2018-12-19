@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>A Query Framework for a Functional Chemical Ontology</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+    	.wrapper {	
+    		padding: 50px;
+    	}
+    	.subont{
+    		padding-left: 20px;
+    	}
+  	</style>
+	</head>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#myNavbar">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand">A Query Framework for a Functional Chemical Ontology</a>
+		    </div>
+		  </div>
+		</nav>
+		<div class="wrapper">
+      <h1>Search Results</h1>
+      <hr>
+  	 	{% block content %}
+  	 		{% for key,value in results.items %}
+  	 			<h4 style="display: inline-block;">Compound Name:  </h4>
+  	 			<strong style="display: inline-block;">{{value.compound_name}}</strong>
+  	 			<br />
+  	 			<h4 style="display: inline-block;">Database ID:  </h4>
+  	 			<strong style="display: inline-block;">{{value.database_id}}</strong>
+  	 			<br />
+  	 			<h4 style="display: inline-block;">Molecular Weight:  </h4>
+  	 			<strong style="display: inline-block;">{{value.molecular_weight}}</strong>
+  	 			<br />
+  	 			<h4 style="display: inline-block;">LogP:  </h4>
+  	 			<strong style="display: inline-block;">{{value.logp}}</strong>
+  	 			<br />
+  	 			<h4 style="display: inline-block;">Kingdom:  </h4>
+  	 			<strong style="display: inline-block;">{{value.kingdom}}</strong>
+  	 			<br />
+  	 			<h4 style="display: inline-block;">Super Class:  </h4>
+  	 			<strong style="display: inline-block;">{{value.super_class}}</strong>
+  	 			<br />
+  	 			<h4 style="display: inline-block;">Class:  </h4>
+  	 			<strong style="display: inline-block;">{{value.class}}</strong>
+  	 			<br />
+  	 			<h4 style="display: inline-block;">Sub Class:  </h4>
+  	 			<strong style="display: inline-block;">{{value.sub_class}}</strong>
+  	 			<br />
+  	 			<h4 style="display: inline-block;">Direct Parent:  </h4>
+  	 			<strong style="display: inline-block;">{{value.direct_parent}}</strong>
+  	 			<br />
+  	 			{% for term, sub_terms in value.terms.items %}
+  	 				<h4 style="display: inline-block;">This compound is a:  </h4>
+  	 				<strong style="display: inline-block;">{{term}}</strong>
+  	 				{% for sub_term in sub_terms %}
+  	 					<h4 style="display: inline-block;">which is a:  </h4>
+  	 					<strong style="display: inline-block;">{{sub_term}}</strong>
+  	 				{% endfor %}
+  	 			{% endfor %}
+  	 		{% endfor %}
+  	 	{% endblock %}
+    </div>
+	<body>
+	</body>
+</html>
